@@ -1,9 +1,15 @@
 package com.pluralsight.ledger;
 
-import java.time.LocalDate;
+import java.io.BufferedWriter;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class LedgerApp {
+
+    private List<Transaction> transactions = new ArrayList<>();
+
     public void run() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -28,26 +34,5 @@ public class LedgerApp {
         }
 
         System.out.println("Goodbye!");
-    }
-
-    private void addDeposit(Scanner scanner) {
-        System.out.println("\n--- Add Deposit ---");
-        System.out.println("Enter description: ");
-        String description = scanner.nextLine();
-
-        System.out.println("Enter vendor: ");
-        String vendor = scanner.nextLine();
-
-        System.out.println("Enter amount: ");
-        double amount = Double.parseDouble(scanner.nextLine());
-
-        Transaction payment = new Transaction(LocalDate.now(), description, vendor, amount);
-        transactions.add(payment);
-
-        System.out.println("Deposit added successfully!");
-    }
-
-    private void addPayment(Scanner scanner) {
-
     }
 }
