@@ -21,3 +21,6 @@
     - Type 2) to add a payment
     - Type 3) to view your ledger
     - Type X) to exit the program
+---
+
+This code is brought to you by yours truly, Jetbrains™
