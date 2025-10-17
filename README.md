@@ -5,11 +5,10 @@
 ## Features
 
 - Add your deposits
-- Add **payments**
+- Add your payments
 - View a full transaction ledger
 - Automatically calculate current balance
-- Save and load transactions from a `transactions.csv` file
-- Color-coded ledger display (green = income, red = expenses)
+- Save and load transactions from a transactions.csv file
 
 ---
 
@@ -22,5 +21,3 @@
     - Type `2` to add a payment
     - Type `3` to view your ledger
     - Type `X` to exit the program
-
-Your transactions will be saved automatically in `transactions.csv`.
