@@ -4,7 +4,7 @@
 
 ## Features
 
-- Add **deposits**
+- Add your deposits
 - Add **payments**
 - View a full transaction ledger
 - Automatically calculate current balance
