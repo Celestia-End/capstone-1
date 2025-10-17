@@ -16,11 +16,11 @@ public class LedgerApp {
         boolean running = true;
 
         while (running) {
-            System.out.println("\n--- Accounting Ledger ---");
+            System.out.println("\n--- Kigen's Legendary Accounting Ledger ---");
             System.out.println("1) Add Deposit");
             System.out.println("2) Add Payment");
             System.out.println("3) View Ledger");
-            System.out.println("X) Exit");
+            System.out.println("X) Ejecto Seato Cuz");
             System.out.print("Choose an option: ");
 
             String choice = scanner.nextLine();
@@ -30,13 +30,13 @@ public class LedgerApp {
                 case "2" -> addPayment(scanner);
                 case "3" -> viewLedger();
                 case "X" -> running = false;
-                default -> System.out.println("Invalid option. Try again.");
+                default -> System.out.println("Bruh...lock in.");
             }
         }
 
         saveTransactions();
 
-        System.out.println("Goodbye!");
+        System.out.println("Sayonara!");
     }
 
     private void addPayment(Scanner scanner) {
