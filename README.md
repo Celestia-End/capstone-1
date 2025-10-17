@@ -23,4 +23,4 @@
     - Type X) to exit the program
 ---
 
-This code is brought to you by yours truly, Jetbrains™
+This code is brought to you by Jetbrains™ & Red Bull™. They give you +1,000,000 aura.
