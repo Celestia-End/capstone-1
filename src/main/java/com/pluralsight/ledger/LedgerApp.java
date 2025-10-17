@@ -11,6 +11,7 @@ public class LedgerApp {
     private final List<Transaction> transactions = new ArrayList<>();
 
     public void run() {
+        loadTransactions();
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
@@ -32,6 +33,8 @@ public class LedgerApp {
                 default -> System.out.println("Invalid option. Try again.");
             }
         }
+
+        saveTransactions();
 
         System.out.println("Goodbye!");
     }
@@ -75,7 +78,7 @@ public class LedgerApp {
     private void viewLedger() {
         System.out.println("\n--- Ledger ---");
         System.out.printf("%-12s %-20s %-15s %10s%n", "Date", "Description", "Vendor", "Amount");
-        System.out.println("---------------------------------------------------------------");
+        System.out.println("────────────────────────────── ⋆⋅☆⋅⋆ ──────────────────────────────");
 
         double total = 0;
 
@@ -85,7 +88,40 @@ public class LedgerApp {
             total += t.getAmount();
         }
 
-        System.out.println("---------------------------------------------------------------");
+        System.out.println("────────────────────────────── ⋆⋅☆⋅⋆ ──────────────────────────────");
         System.out.printf("Current Balance: $%.2f%n", total);
+    }
+
+    private void loadTransactions() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length == 4) {
+                    LocalDate date = LocalDate.parse(parts[0]);
+                    String description = parts[1];
+                    String vendor = parts[2];
+                    double amount = Double.parseDouble(parts[3]);
+                    transactions.add(new Transaction(date, description, vendor, amount));
+                }
+            }
+            System.out.println("Transactions loaded successfully.");
+        } catch (FileNotFoundException e) {
+            System.out.println("No saved transactions found (a new file will be created).");
+        } catch (IOException e) {
+            System.out.println("Error reading transactions: " + e.getMessage());
+        }
+    }
+
+    private void saveTransactions() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.csv"))) {
+            for (Transaction t : transactions) {
+                writer.write(t.getDate() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount());
+                writer.newLine();
+            }
+            System.out.println("Transactions saved successfully.");
+        } catch (IOException e) {
+            System.out.println("Error saving transactions: " + e.getMessage());
+        }
     }
 }
